@@ -22,9 +22,7 @@
     {
       "projectId": "tHoBsERPbb6AELT3K42D8j",
       "version": "latest",
-      "dependencies": {
-        "ohDidvG9XsCeFumugENU3J": "4.6.0"
-      },
+      "dependencies": {},
       "lang": "ts",
       "fileLocks": [
         {
@@ -33,44 +31,34 @@
           "checksum": "8d44de0f4992ee4fdf6c931df3d4c8ae"
         },
         {
-          "assetId": "tHoBsERPbb6AELT3K42D8j",
-          "type": "projectCss",
-          "checksum": "7a12fc2fad9eaf6974f963e70daf8d7d"
-        },
-        {
-          "assetId": "tHoBsERPbb6AELT3K42D8j",
-          "checksum": "57c239af65691798e621d12ed3808721",
-          "type": "globalContexts"
-        },
-        {
           "type": "renderModule",
           "assetId": "JAVaTjH4dQlCx",
-          "checksum": "c7378382f5083ac82c2928f5286893fb"
+          "checksum": "cfd467f8eb80d75948b139792e6f2914"
         },
         {
           "type": "cssRules",
           "assetId": "JAVaTjH4dQlCx",
-          "checksum": "c7378382f5083ac82c2928f5286893fb"
+          "checksum": "cfd467f8eb80d75948b139792e6f2914"
         },
         {
           "type": "renderModule",
           "assetId": "8TJEroAhM3k",
-          "checksum": "4385259e795530bf6c85a318c8347a4f"
+          "checksum": "d9b585292190586b3a16661e5b150619"
         },
         {
           "type": "cssRules",
           "assetId": "8TJEroAhM3k",
-          "checksum": "4385259e795530bf6c85a318c8347a4f"
+          "checksum": "d9b585292190586b3a16661e5b150619"
         },
         {
           "type": "renderModule",
           "assetId": "o3lQhnzUbOi",
-          "checksum": "4220cf2e0b06efa1847f9f7f779bbcf1"
+          "checksum": "47c175db2652c132b6a40d068cbb2452"
         },
         {
           "type": "cssRules",
           "assetId": "o3lQhnzUbOi",
-          "checksum": "4220cf2e0b06efa1847f9f7f779bbcf1"
+          "checksum": "47c175db2652c132b6a40d068cbb2452"
         },
         {
           "type": "icon",
@@ -86,6 +74,16 @@
           "type": "icon",
           "assetId": "clGIZfb7y7I",
           "checksum": "df2ea72c0634ce3b292ffc32f286e124"
+        },
+        {
+          "type": "globalVariant",
+          "assetId": "1B7THS69RZ",
+          "checksum": "e6378b019b728328ea92dc2be0512674"
+        },
+        {
+          "assetId": "tHoBsERPbb6AELT3K42D8j",
+          "type": "projectCss",
+          "checksum": "bf5bd2c6872cf4d8cccccb3717b6e7d4"
         }
       ],
       "codegenVersion": "0.0.1"

@@ -42,7 +42,6 @@ import {
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import * as plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic_antd_5_hostless.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import * as projectcss from "./plasmic_login_page.module.css"; // plasmic-import: tHoBsERPbb6AELT3K42D8j/projectcss
 import * as sty from "./PlasmicTextInput.module.css"; // plasmic-import: o3lQhnzUbOi/css
 
@@ -244,7 +243,6 @@ function PlasmicTextInput__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
         {
           [sty.root___focusVisibleWithin]: triggers.focusVisibleWithin_root,

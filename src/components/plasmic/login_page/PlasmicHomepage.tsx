@@ -38,23 +38,28 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import TextInput from "../../TextInput"; // plasmic-import: o3lQhnzUbOi/component
 import Button from "../../Button"; // plasmic-import: 8TJEroAhM3k/component
+import TextInput from "../../TextInput"; // plasmic-import: o3lQhnzUbOi/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import * as plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic_antd_5_hostless.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import * as projectcss from "./plasmic_login_page.module.css"; // plasmic-import: tHoBsERPbb6AELT3K42D8j/projectcss
 import * as sty from "./PlasmicHomepage.module.css"; // plasmic-import: JAVaTjH4dQlCx/css
 
-import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: clGIZfb7y7I/icon
 import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: yHmZyJnfBLZ/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: t8FUNEplCfi/icon
+import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: clGIZfb7y7I/icon
 
-export type PlasmicHomepage__VariantMembers = {};
-export type PlasmicHomepage__VariantsArgs = {};
+export type PlasmicHomepage__VariantMembers = {
+  connected: "connected";
+};
+export type PlasmicHomepage__VariantsArgs = {
+  connected?: SingleBooleanChoiceArg<"connected">;
+};
 type VariantPropType = keyof PlasmicHomepage__VariantsArgs;
-export const PlasmicHomepage__VariantProps = new Array<VariantPropType>();
+export const PlasmicHomepage__VariantProps = new Array<VariantPropType>(
+  "connected"
+);
 
 export type PlasmicHomepage__ArgsType = {};
 type ArgPropType = keyof PlasmicHomepage__ArgsType;
@@ -64,12 +69,13 @@ export type PlasmicHomepage__OverridesType = {
   root?: p.Flex<"div">;
   section?: p.Flex<"section">;
   h1?: p.Flex<"h1">;
+  freeBox?: p.Flex<"div">;
   textInput?: p.Flex<typeof TextInput>;
   textInput2?: p.Flex<typeof TextInput>;
-  button?: p.Flex<typeof Button>;
 };
 
 export interface DefaultHomepageProps {
+  connected?: SingleBooleanChoiceArg<"connected">;
   className?: string;
 }
 
@@ -120,6 +126,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "" as const
+      },
+      {
+        path: "connected",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.connected
       }
     ],
     [$props, $ctx]
@@ -146,14 +158,22 @@ function PlasmicHomepage__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            sty.root
+            sty.root,
+            {
+              [sty.rootconnected]: hasVariant($state, "connected", "connected")
+            }
           )}
         >
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
-            className={classNames(projectcss.all, sty.section)}
+            className={classNames(projectcss.all, sty.section, {
+              [sty.sectionconnected]: hasVariant(
+                $state,
+                "connected",
+                "connected"
+              )
+            })}
           >
             <h1
               data-plasmic-name={"h1"}
@@ -165,63 +185,202 @@ function PlasmicHomepage__RenderFunc(props: {
                 sty.h1
               )}
             >
-              {"Hello!"}
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return `Hello ${$props.user.name}!`;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "Hello!";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
             </h1>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___5MVw
-              )}
-            >
-              {"Username :"}
-            </div>
-            <TextInput
-              data-plasmic-name={"textInput"}
-              data-plasmic-override={overrides.textInput}
-              className={classNames("__wab_instance", sty.textInput)}
-              onChange={(...eventArgs) => {
-                p.generateStateOnChangeProp($state, ["textInput", "value"])(
-                  (e => e.target?.value).apply(null, eventArgs)
-                );
-              }}
-              type={"text" as const}
-              value={
-                p.generateStateValueProp($state, ["textInput", "value"]) ?? ""
-              }
-            />
+            {(hasVariant($state, "connected", "connected") ? true : true) ? (
+              <Button
+                className={classNames("__wab_instance", sty.button__vn9Ze, {
+                  [sty.buttonconnected__vn9Zea7Knv]: hasVariant(
+                    $state,
+                    "connected",
+                    "connected"
+                  )
+                })}
+                onClick={async event => {
+                  const $steps = {};
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: __wrapUserFunction(
+                            {
+                              type: "InteractionArgLoc",
+                              actionName: "customFunction",
+                              interactionUuid: "rw5rh0q-I",
+                              componentUuid: "JAVaTjH4dQlCx",
+                              argName: "customFunction"
+                            },
+                            () => () => {
+                              return $props.logout();
+                            }
+                          )
+                        };
+                        return __wrapUserFunction(
+                          {
+                            type: "InteractionLoc",
+                            actionName: "customFunction",
+                            interactionUuid: "rw5rh0q-I",
+                            componentUuid: "JAVaTjH4dQlCx"
+                          },
+                          () =>
+                            (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]),
+                          actionArgs
+                        );
+                      })()
+                    : undefined;
+                  if (
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await __wrapUserPromise(
+                      {
+                        type: "InteractionLoc",
+                        actionName: "customFunction",
+                        interactionUuid: "rw5rh0q-I",
+                        componentUuid: "JAVaTjH4dQlCx"
+                      },
+                      $steps["runCode"]
+                    );
+                  }
+                }}
+              >
+                {"Logout"}
+              </Button>
+            ) : null}
+            {(hasVariant($state, "connected", "connected") ? true : true) ? (
+              <div
+                data-plasmic-name={"freeBox"}
+                data-plasmic-override={overrides.freeBox}
+                className={classNames(projectcss.all, sty.freeBox, {
+                  [sty.freeBoxconnected]: hasVariant(
+                    $state,
+                    "connected",
+                    "connected"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___5MVw
+                  )}
+                >
+                  {"Username :"}
+                </div>
+                <TextInput
+                  data-plasmic-name={"textInput"}
+                  data-plasmic-override={overrides.textInput}
+                  className={classNames("__wab_instance", sty.textInput)}
+                  onChange={(...eventArgs) => {
+                    p.generateStateOnChangeProp($state, ["textInput", "value"])(
+                      (e => e.target?.value).apply(null, eventArgs)
+                    );
+                  }}
+                  type={"text" as const}
+                  value={
+                    p.generateStateValueProp($state, ["textInput", "value"]) ??
+                    ""
+                  }
+                />
 
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__rm4N5
-              )}
-            >
-              {"Password :"}
-            </div>
-            <TextInput
-              data-plasmic-name={"textInput2"}
-              data-plasmic-override={overrides.textInput2}
-              className={classNames("__wab_instance", sty.textInput2)}
-              onChange={(...eventArgs) => {
-                p.generateStateOnChangeProp($state, ["textInput2", "value"])(
-                  (e => e.target?.value).apply(null, eventArgs)
-                );
-              }}
-              type={"password" as const}
-              value={
-                p.generateStateValueProp($state, ["textInput2", "value"]) ?? ""
-              }
-            />
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__rm4N5
+                  )}
+                >
+                  {"Password :"}
+                </div>
+                <TextInput
+                  data-plasmic-name={"textInput2"}
+                  data-plasmic-override={overrides.textInput2}
+                  className={classNames("__wab_instance", sty.textInput2)}
+                  onChange={(...eventArgs) => {
+                    p.generateStateOnChangeProp($state, [
+                      "textInput2",
+                      "value"
+                    ])((e => e.target?.value).apply(null, eventArgs));
+                  }}
+                  type={"password" as const}
+                  value={
+                    p.generateStateValueProp($state, ["textInput2", "value"]) ??
+                    ""
+                  }
+                />
 
-            <Button
-              data-plasmic-name={"button"}
-              data-plasmic-override={overrides.button}
-              className={classNames("__wab_instance", sty.button)}
-            >
-              {"Login"}
-            </Button>
+                <Button
+                  className={classNames("__wab_instance", sty.button___6OaZo)}
+                  onClick={async event => {
+                    const $steps = {};
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: __wrapUserFunction(
+                              {
+                                type: "InteractionArgLoc",
+                                actionName: "customFunction",
+                                interactionUuid: "iNc5c_MrN",
+                                componentUuid: "JAVaTjH4dQlCx",
+                                argName: "customFunction"
+                              },
+                              () => () => {
+                                $props.login($state.textInput.value);
+                                return ($state.textInput.value = "");
+                              }
+                            )
+                          };
+                          return __wrapUserFunction(
+                            {
+                              type: "InteractionLoc",
+                              actionName: "customFunction",
+                              interactionUuid: "iNc5c_MrN",
+                              componentUuid: "JAVaTjH4dQlCx"
+                            },
+                            () =>
+                              (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]),
+                            actionArgs
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await __wrapUserPromise(
+                        {
+                          type: "InteractionLoc",
+                          actionName: "customFunction",
+                          interactionUuid: "iNc5c_MrN",
+                          componentUuid: "JAVaTjH4dQlCx"
+                        },
+                        $steps["runCode"]
+                      );
+                    }
+                  }}
+                >
+                  {"Login"}
+                </Button>
+              </div>
+            ) : null}
           </section>
         </div>
       </div>
@@ -230,12 +389,12 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "h1", "textInput", "textInput2", "button"],
-  section: ["section", "h1", "textInput", "textInput2", "button"],
+  root: ["root", "section", "h1", "freeBox", "textInput", "textInput2"],
+  section: ["section", "h1", "freeBox", "textInput", "textInput2"],
   h1: ["h1"],
+  freeBox: ["freeBox", "textInput", "textInput2"],
   textInput: ["textInput"],
-  textInput2: ["textInput2"],
-  button: ["button"]
+  textInput2: ["textInput2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -244,9 +403,9 @@ type NodeDefaultElementType = {
   root: "div";
   section: "section";
   h1: "h1";
+  freeBox: "div";
   textInput: typeof TextInput;
   textInput2: typeof TextInput;
-  button: typeof Button;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -311,9 +470,9 @@ export const PlasmicHomepage = Object.assign(
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
     h1: makeNodeComponent("h1"),
+    freeBox: makeNodeComponent("freeBox"),
     textInput: makeNodeComponent("textInput"),
     textInput2: makeNodeComponent("textInput2"),
-    button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

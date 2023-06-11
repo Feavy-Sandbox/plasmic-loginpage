@@ -7,7 +7,7 @@
   },
   "style": {
     "scheme": "css-modules",
-    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
   },
   "images": {
     "scheme": "files",
@@ -231,7 +231,8 @@
           "displayName": "plasmic-antd5-date-picker",
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerDatePicker"
         }
-      ]
+      ],
+      "jsBundleThemes": []
     },
     {
       "projectId": "tHoBsERPbb6AELT3K42D8j",
@@ -301,7 +302,7 @@
       ],
       "images": [],
       "indirect": false,
-      "globalContextsFilePath": "plasmic/login_page/PlasmicGlobalContextsProvider.tsx",
+      "globalContextsFilePath": "",
       "codeComponents": [
         {
           "id": "ElZ2a8QKNo1j5D",
@@ -325,6 +326,12 @@
         "name": "Screen",
         "projectId": "tHoBsERPbb6AELT3K42D8j",
         "contextFilePath": "plasmic/login_page/PlasmicGlobalVariant__Screen.tsx"
+      },
+      {
+        "id": "1B7THS69RZ",
+        "name": "UnnamedGlobalGroupOfVariants",
+        "projectId": "tHoBsERPbb6AELT3K42D8j",
+        "contextFilePath": "plasmic/login_page/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants.tsx"
       }
     ]
   },
